@@ -1,0 +1,221 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	font-size: 14px;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol";
+}
+
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	margin: 0 0 -36px;
+	text-align: center;
+}
+
+.blank_header {
+	height: 100px;
+}
+
+.qr_login {
+	display: block;
+	width: 360px;
+	text-align: center;
+	font-size: 14px;
+	vertical-align: middle;
+	color: #666;
+	margin: 0 auto;
+}
+
+.qr_login p {
+	margin: 5px 0;
+	line-height: 14px;
+}
+
+.qr_area {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.qrcode {
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	background: url('https://i.loli.net/2018/04/11/5accf45f2d356.gif')
+		center center no-repeat;
+	cursor: pointer;
+}
+
+.login_success, .qr_invalid {
+	display: none;
+	vertical-align: top;
+	position: relative;
+	top: -100px;
+	width: 100px;
+	height: 100px;
+	margin-bottom: -100px;
+	text-align: center;
+	background: rgba(0, 0, 0, .25);
+	cursor: pointer;
+}
+
+.login_success .fa, .qr_invalid .fa {
+	display: inline-block;
+	height: 100px;
+	overflow: hidden;
+	font-size: 60px;
+	line-height: 100px;
+	overflow: hidden;
+}
+
+.login_success .fa-check {
+	color: #74C328;
+}
+
+.qr_invalid .fa-refresh {
+	color: #F39800;
+}
+
+.tips {
+	color: #000;
+}
+
+label strong {
+	display: inline-block;
+	margin-right: .75em;
+}
+
+.alacarte {
+	display: block;
+	width: 360px;
+	text-align: left;
+	line-height: 2em;
+	vertical-align: middle;
+	cursor: default;
+	margin: 20px auto 0;
+}
+
+.alacarte p {
+	margin: 0;
+}
+
+.alacarte strong {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 100%;
+}
+
+.alacarte form input {
+	display: inline-block;
+	margin-left: .5em;
+}
+
+.alacarte form input[type=text] {
+	width: 16.25em;
+}
+
+.alacarte form input[type=submit] {
+	cursor: pointer;
+	margin-left: 1em;
+}
+
+.kwbox {
+	display: block;
+	width: 360px;
+	text-align: left;
+	vertical-align: top;
+	cursor: default;
+	margin: 20px auto 0;
+}
+
+.kwbox textarea {
+	width: 342px;
+	height: 150px;
+	display: block;
+	text-align: left;
+	padding: 8px;
+	resize: none;
+	border: solid 1px #DDD;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.kwbox textarea:focus {
+	outline: none;
+	outline-style: none;
+	-moz-outline-style: none;
+}
+
+.kwbox p {
+	display: inline-block;
+	width: 100%;
+}
+
+.kwbox input {
+	float: right;
+	cursor: pointer;
+}
+
+.help p {
+	margin: 50px 0;
+}
+
+.more span {
+	display: inline-block;
+	margin: 0 .5em;
+}
+
+.push {
+	height: 36px;
+}
+
+.footer {
+	width: 100%;
+	height: 36px;
+	text-align: center;
+	overflow: hidden;
+	font-size: 12px;
+	color: rgb(153, 153, 153);
+}
+
+a, a:link {
+	text-decoration: none;
+	color: rgb(3, 102, 214);
+	cursor: pointer;
+}
+
+a:focus {
+	outline: none;
+	outline-style: none;
+	-moz-outline-style: none;
+}
+
+a::-moz-focus-inner {
+	border: 0;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.donate {
+	display: inline-block;
+	padding: 0 2em;
+	background: #fd6062;
+	border-radius: 16px;
+	color: #fff !important;
+	font-size: 16px;
+	line-height: 32px;
+}
+
+.donate:hover {
+	text-decoration: none !important;
+}
