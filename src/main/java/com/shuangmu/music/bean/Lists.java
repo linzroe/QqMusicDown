@@ -36,7 +36,7 @@ public class Lists {
     private Mv mv;
     private String name;
     private int newStatus;
-    private int nt;
+    private String nt;
     private Pay pay;
     private int pure;
     private List<Singer> singer;
@@ -212,10 +212,10 @@ public class Lists {
          return newStatus;
      }
 
-    public void setNt(int nt) {
+    public void setNt(String nt) {
          this.nt = nt;
      }
-     public int getNt() {
+     public String getNt() {
          return nt;
      }
 
