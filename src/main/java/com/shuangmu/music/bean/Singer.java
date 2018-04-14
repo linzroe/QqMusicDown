@@ -16,8 +16,8 @@ public class Singer {
     private String name;
     private String title;
     private String title_hilight;
-    private int type;
-    private int uin;
+    private String type;
+    private String uin;
     public void setId(long id) {
          this.id = id;
      }
@@ -53,17 +53,17 @@ public class Singer {
          return title_hilight;
      }
 
-    public void setType(int type) {
+    public void setType(String type) {
          this.type = type;
      }
-     public int getType() {
+     public String getType() {
          return type;
      }
 
-    public void setUin(int uin) {
+    public void setUin(String uin) {
          this.uin = uin;
      }
-     public int getUin() {
+     public String getUin() {
          return uin;
      }
 

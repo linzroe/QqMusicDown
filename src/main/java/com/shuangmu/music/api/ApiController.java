@@ -14,6 +14,7 @@ import okhttp3.RequestBody;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 
@@ -33,16 +34,21 @@ public class ApiController {
         String guid="1010389200";
         System.out.println("guid："+guid);
         String key=GetKeys(guid);
-        System.out.println(         JSONArray.toJSON(Getsoso(key,guid,"我继续"))   );
+        String name="离人愁";
+        System.out.println(JSONArray.toJSON(Getsoso(key,guid,name))   );
 
     }
-    @RequestMapping("soso")
-    public Object Soso(@RequestParam("name") String name){
+    @PostMapping("soso")
+    public Object Soso(@RequestParam("name") String name,HttpServletRequest request){
         String guid="1010389200";
 
-        System.out.println("查询："+name);
+
+         System.out.println("查询："+name);
+         if(name==null||name==""){
+             return  null;
+         }
         String key=GetKeys(guid);
-         return     JSONArray.toJSON( Getsoso(key,guid,name));
+         return     JSONArray.toJSON( Getsoso(key,guid,name.trim()));
 
     }
 
@@ -94,8 +100,6 @@ public class ApiController {
 
             res=res.replaceAll("callback\\(","").replaceAll("\\)","");
 
-            System.out.println(res);
-
             MusicBean music= JSONArray.parseObject(res,MusicBean.class);
 
             List<Lists> lists =  music.getData().getSong().getLists();
@@ -111,6 +115,7 @@ public class ApiController {
                 String hd = "https://dl.stream.qqmusic.qq.com/M800" + musics.getFile().getMedia_mid() + ".mp3?guid="+guid+"&vkey=" + key + "&uid=0&fromtag=53";
                 String MP3 = "https://dl.stream.qqmusic.qq.com/M500" + musics.getFile().getMedia_mid() + ".mp3?guid="+guid+"&vkey=" + key + "&uid=0&fromtag=53";
                 String falc = "https://dl.stream.qqmusic.qq.com/F000" + musics.getFile().getMedia_mid() + ".flac?guid="+guid+"&vkey=" + key + "&uid=0&fromtag=53";
+                String ape = "https://dl.stream.qqmusic.qq.com/A000" + musics.getFile().getMedia_mid() + ".ape?guid="+guid+"&vkey=" + key + "&uid=0&fromtag=53";
 //                List<String> urlList = new ArrayList<>();
 //                urlList.add(hd);
 //                urlList.add(MP3);
