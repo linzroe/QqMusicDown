@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
+import org.apache.log4j.Logger;
 
 /**
  * Created by Lin on 2018/4/11.
@@ -25,6 +27,7 @@ import java.util.*;
 @RequestMapping("/qqmusic")
 public class ApiController {
 
+    private  Logger logger = Logger.getLogger(getClass());
 
     private String key="https://c.y.qq.com/base/fcgi-bin/fcg_musicexpress.fcg";//
 
@@ -34,24 +37,50 @@ public class ApiController {
         String guid="1010389200";
         System.out.println("guid："+guid);
         String key=GetKeys(guid);
-        String name="离人愁";
+        String name="歌曲名：I Just Wanna Run，歌手名：The Downtown Fiction，专辑名：Best I Never Had";
         System.out.println(JSONArray.toJSON(Getsoso(key,guid,name))   );
 
     }
     @PostMapping("soso")
-    public Object Soso(@RequestParam("name") String name,HttpServletRequest request){
+    public Object Soso(@RequestParam("name") String name,HttpServletRequest request,HttpServletResponse response){
         String guid="1010389200";
+        response.addHeader("Access-Control-Allow-Origin", "*");
 
-
-         System.out.println("查询："+name);
+        String ip=   getLocalIp(request);
          if(name==null||name==""){
              return  null;
          }
+        logger.info("查询："+name+"   ip:"+ip+ "   origin:"+request.getHeader("origin")+ "   UA:"+request.getHeader("User-Agent"));
+
         String key=GetKeys(guid);
          return     JSONArray.toJSON( Getsoso(key,guid,name.trim()));
 
     }
 
+    public  String getLocalIp(HttpServletRequest request) {
+        String remoteAddr = request.getRemoteAddr();
+        String forwarded = request.getHeader("X-Forwarded-For");
+        String realIp = request.getHeader("X-Real-IP");
+
+        String ip = null;
+        if (realIp == null) {
+            if (forwarded == null) {
+                ip = remoteAddr;
+            } else {
+                ip =  forwarded.split(",")[0];
+            }
+        } else {
+            if (realIp.equals(forwarded)) {
+                ip = realIp;
+            } else {
+                if(forwarded != null){
+                    forwarded = forwarded.split(",")[0];
+                }
+                ip =  forwarded;
+            }
+        }
+        return ip;
+    }
 
     /**
      * 获取Kye

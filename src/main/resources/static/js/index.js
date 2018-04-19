@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // 初始化表格
     initTable();
+    console.log("版权所有：双木's Blog |  Https://09L.Me")
 });
 
 // 表格初始化

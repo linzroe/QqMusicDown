@@ -31,7 +31,7 @@
                     <div class="row">
                             <div class="input-group">
                                 <div class="input-group">
-                                <input  name="name" id="name" value="伟大的渺小" placeholder="歌曲名/歌手名/专辑名" type="text" class="form-control">
+                                <input  name="name" id="name"    placeholder="输入歌名即可" type="text" class="form-control">
                                 <span class="input-group-btn">
                                   <button class="btn btn-default" id="eventquery"  type="button">搜索</button>
                             </span>
@@ -47,10 +47,11 @@
 
     <hr>
              <div class="alert alert-warning">
+                 <p>输入歌名搜索出来的若不是你想要的,那么就搜歌名+歌手 比如这样：林俊杰醉赤壁 </p>
                  <p><a href="https://09l.me/13.html" target="_blank">QQMusic在线解析使用教程&免责声明</a>  </p>
                  <span class="glyphicon glyphicon-info-sign"></span>本站仅供个人学习研究使用.
             </div>
-   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v1.0.2</span>
+   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v1.0.5</span>
 
     <script src="js/index.js"></script>
 <script>
