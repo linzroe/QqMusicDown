@@ -10,9 +10,11 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
 </head>
 <body>
 
@@ -22,9 +24,13 @@
 <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
     <img src="img/music.png" width='700'>
 </div>
-
-
 <div class="container">
+
+<div class=" col-sm-8"> 
+    <div  id="player1" class="aplayer">
+    </div>
+</div>
+ 
     <div class="fixed-table-toolbar">
         <div class="pull-right search">
             <div >
@@ -49,9 +55,10 @@
              <div class="alert alert-warning">
                  <p>输入歌名搜索出来的若不是你想要的,那么就搜歌名+歌手 比如这样：林俊杰醉赤壁 </p>
                  <p><a href="https://09l.me/13.html" target="_blank">QQMusic在线解析使用教程&免责声明</a>  </p>
-                 <span class="glyphicon glyphicon-info-sign"></span>本站仅供个人学习研究使用.
+                 <span class="glyphicon glyphicon-info-sign"></span>调用本站API接口,则请保留作者信息》<a href="https://09l.me/" target="_blank">双木博客</a>,本站会对未保留版权站点停止接口支持。<br>
+                 <span class="glyphicon glyphicon-info-sign"></span>本站仅供个人学习研究使用，侵权删,本站联系邮箱  <a href="mailto:admin@09L.me">admin@09L.me</a>
             </div>
-   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v1.0.5</span>
+   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v1.0.7</span>
 
     <script src="js/index.js"></script>
 <script>

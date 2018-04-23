@@ -1,8 +1,45 @@
 $(document).ready(function() {
     // 初始化表格
     initTable();
-    console.log("版权所有：双木's Blog |  Https://09L.Me")
+    console.log("版权所有：双木's Blog |  Https://Y.09L.Me")
 });
+
+ 
+ 
+
+function palys(titles,authors,urls,imgs,lyrs){
+	
+	var settings = {
+			  "async": true,
+			  "crossDomain": true,
+			  "url": "http://a.com:8080/qqmusic/lyric/"+lyrs+".lrc",
+			  "method": "GET",
+			  "headers": {
+			    "cache-control": "no-cache",
+			    "postman-token": "90212d5a-0ae8-bc07-15e9-374d075f6685"
+			  }
+			}
+
+			$.ajax(settings).done(function (response) {
+			  var ap1 = new APlayer({
+			        element: document.getElementById('player1'),
+			        narrow: false,
+			        autoplay: true,
+			        showlrc: true,
+			        music: {
+			            title: titles,
+			            author: authors,
+			            url: urls,
+			            pic: imgs,
+			            lrc: response
+			        }
+			    });
+			  
+			});
+	
+   
+}
+
 
 // 表格初始化
 function initTable() {
@@ -31,13 +68,27 @@ function initTable() {
             field: 'album',
             title: '专辑',
             align: 'center'
+        }, {
+        	field: 'img',
+        	title: 'img',
+        	visible:false
+        }, {
+        	field: 'lyr',
+        	title: 'lyr',
+        	visible:false
         },{
             field: 'MP3',
-            title: '普通音质',
+            title: '试听',
             align: 'center',
             width: '80px',
             formatter: function(value, row, index) {
-                return "<a href='"+value+"'  target='_blank'>直达</a>";
+            	var mycars=new Array()
+            	mycars[0]="\""+row["name"]+"\"";
+            	mycars[1]="\""+row["singer"]+"\"";
+            	mycars[2]="\""+value+"\"";
+            	mycars[3]="\""+row["img"]+"\"";
+            	mycars[4]="\""+row["lyr"]+"\"";
+            	return "<button onclick='palys("+mycars+")' type='button' class='btn btn-success  btn-sm'>试听</button>";
             }
         },{
             field: 'HD',
