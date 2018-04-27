@@ -15,6 +15,8 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
     <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/2.0.0/clipboard.min.js"></script>
 </head>
 <body>
 
@@ -39,7 +41,9 @@
                                 <div class="input-group">
                                 <input  name="name" id="name"    placeholder="输入歌名即可" type="text" class="form-control">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" id="eventquery"  type="button">搜索</button>
+                                  <button class="btn btn-primary" id="eventquery"  type="button">搜索</button>
+                                  <button class="btn btn-info" id="copyhd"  class="btn" data-clipboard-action="cut" data-clipboard-target="#urltext"   type="button">复制高品</button>
+                                  <button class="btn btn-success" id="copyfalc"  class="btn" data-clipboard-action="cut" data-clipboard-target="#urltext"   type="button">复制无损</button>
                             </span>
                             </div><!-- /input-group -->
                     </div><!-- /.row -->
@@ -48,17 +52,17 @@
     </div>
         <div class=table-responsive">
           <table id="eventTable"  ></table>
-        </div>
+        </div  >
 </div>
 
     <hr>
              <div class="alert alert-warning">
-                 <p>输入歌名搜索出来的若不是你想要的,那么就搜歌名+歌手 比如这样：林俊杰醉赤壁 </p>
+                 <p><span style="color:#60D978;"><strong>最近更新：支持勾选多首歌曲,一键复制其所有歌曲真实播放地址</strong></span> </p>
                  <p><a href="https://09l.me/13.html" target="_blank">QQMusic在线解析使用教程&免责声明</a>  </p>
-                 <span class="glyphicon glyphicon-info-sign"></span>调用本站API接口,则请保留作者信息》<a href="https://09l.me/" target="_blank">双木博客</a>,本站会对未保留版权站点停止接口支持。<br>
-                 <span class="glyphicon glyphicon-info-sign"></span>本站仅供个人学习研究使用，侵权删,本站联系邮箱  <a href="mailto:admin@09L.me">admin@09L.me</a>
+                  <span class="glyphicon glyphicon-info-sign"></span>本站仅供个人学习研究使用，侵权删,本站联系邮箱  <a href="mailto:admin@09L.me">admin@09L.me</a>
             </div>
-   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v1.0.7</span>
+   <span style="float:right "> &copy; 2018   <a href="https://09l.me/" target="_blank">双木's Blog</a>   &nbsp;&nbsp;Beta v2.0.1</span>
+ 		     <textarea  id="urltext"   style="BORDER-BOTTOM: 0px solid; BORDER-LEFT: 0px solid; BORDER-RIGHT: 0px solid; BORDER-TOP: 0px solid;"></textarea>
 
     <script src="js/index.js"></script>
 <script>

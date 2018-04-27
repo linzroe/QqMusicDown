@@ -93,32 +93,23 @@ public class ApiController {
              return  null;
          }
 
-         String origin=request.getHeader("origin").toString();
-        Map<String, Object> banmap = new HashMap<String, Object>();
-        List< Map<String,Object>> banlist =  new ArrayList<>();
-
-        banmap.put("name", "贵站未保留任何版权信息或作者信息,对贵站停用接口解析服务");
-        banmap.put("album", "Ban");
-        banmap.put("singer", "admin@09L.me");
-        banmap.put("MP3", "https://y.09l.me");
-        banmap.put("FALC", "https://y.09l.me");
-        banmap.put("HD", "https://y.09l.me");
-         banlist.add(banmap);
-
-        logger.info("查询："+name+"   ip:"+ip+ "   origin:"+origin);
-
-         switch (origin){
-            case "http://4ppt.cn":
-                 return JSONArray.toJSON(banlist);
-            case "https://4ppt.cn":
-                 return JSONArray.toJSON(banlist);
-            case "http://liumuze.com":
-                returntp://4ppt.cn":
-                 return JSONArray.toJSON(banlist);
-            case "https://liumuze.com":
-                return JSONArray.toJSON(banlist);
-        }
-
+ 
+			String origin=request.getHeader("origin");
+	         if(origin=="QQMusicAnalytical_0.1"||origin=="52QQMusicAnalytical_0.1"){
+	           Map<String, Object> banmap = new HashMap<String, Object>();
+	           List< Map<String,Object>> banlist =  new ArrayList<>();
+		           banmap.put("name", "此版本停用");
+		           banmap.put("album", "新版:Https://Y.09L.Me");
+		           banmap.put("singer", "新版:Https://Y.09L.Me");
+		           banmap.put("MP3", "Https://Y.09L.Me");
+		           banmap.put("FALC", "Https://Y.09L.Me");
+		           banmap.put("HD", "Https://Y.09L.Me");
+		            banlist.add(banmap);
+	            return     JSONArray.toJSON(banlist);
+	         }
+         
+         logger.info("查询："+name+"   ip:"+ip);
+        
 
         String key=GetKeys(guid);
          return     JSONArray.toJSON( Getsoso(key,guid,name.trim()));
@@ -158,8 +149,7 @@ public class ApiController {
 
         OkHttpClient client = new OkHttpClient();
         String key="";
-        MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-        Request request = new Request.Builder()
+         Request request = new Request.Builder()
                 .url("https://c.y.qq.com/base/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=1010389200&format=json")
                 .get()
                 .build();

@@ -2,6 +2,9 @@ $(document).ready(function() {
     // 初始化表格
     initTable();
     console.log("版权所有：双木's Blog |  Https://Y.09L.Me")
+    
+    
+    
 });
 
  
@@ -12,7 +15,7 @@ function palys(titles,authors,urls,imgs,lyrs){
 	var settings = {
 			  "async": true,
 			  "crossDomain": true,
-			  "url": "http://a.com:8080/qqmusic/lyric/"+lyrs+".lrc",
+			  "url": "qqmusic/lyric/"+lyrs+".lrc",
 			  "method": "GET",
 			  "headers": {
 			    "cache-control": "no-cache",
@@ -56,7 +59,9 @@ function initTable() {
         toolbar: '#toolbar', // 工具栏ID
         toolbarAlign: 'right', // 工具栏对齐方式
         queryParams: queryParams, // 请求参数，这个关系到后续用到的异步刷新
-        columns: [{
+        columns: [
+        {field: "check", title: "",align: "center", checkbox: true,formatter:stateFormatter},	
+        {
             field: 'name',
             title: '歌名',
             align: 'center'
@@ -90,25 +95,38 @@ function initTable() {
             	mycars[4]="\""+row["lyr"]+"\"";
             	return "<button onclick='palys("+mycars+")' type='button' class='btn btn-success  btn-sm'>试听</button>";
             }
-        },{
+        }
+        ,{
             field: 'HD',
-            title: '高品质',
+            title: '高质',
             align: 'center',
             width: '80px',
+        	visible:false,
             formatter: function(value, row, index) {
                 return "<a href='"+value+"'  target='_blank'>直达</a>";
             }
         },{
             field: 'FALC',
-            title: 'FALC无损',
+            title: '无损',
             align: 'center',
             width: '80px',
+        	visible:true,
             formatter: function(value, row, index) {
                 return "<a href='"+value+"'  target='_blank'>直达</a>";
             }
         }
         ],
     });
+}
+
+
+function stateFormatter(value, row, index) {
+    if (row.id == 561)
+        return {
+            disabled : true,//设置是否可用
+            checked : true//设置选中
+        };
+    return value;
 }
 
 // 分页查询参数，是以键值对的形式设置的
@@ -118,11 +136,54 @@ function queryParams(params) {
     }
 }
 
+
+
+
 // 搜索按钮触发事件
 $(function() {
     $("#eventquery").click(function() {
         $('#eventTable').bootstrapTable(('refresh')); // 很重要的一步，刷新url！
     });
+   
+});
+
+$("#copyhd").click(function() {
+		var row=$.map($("#eventTable").bootstrapTable('getSelections'),function(row){
+			return row ;
+		});
+	 
+ 		for(var i=0;i<row.length;i++){
+ 			document.getElementById("urltext").value += row[i].HD+"\n";
+ 		}
+		
+});
+
+$("#copyfalc").click(function() {
+	var row=$.map($("#eventTable").bootstrapTable('getSelections'),function(row){
+		return row ;
+	});
+ 
+	for(var i=0;i<row.length;i++){
+ 		document.getElementById("urltext").value += row[i].FALC+"\n";
+		}
+	
+});
+
+
+var clipboard = new ClipboardJS('.btn');
+
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    e.clearSelection();
+    alert("复制成功");
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+    alert("复制失败");
 });
 
 $('#name').bind('keyup', function(event) {
